@@ -19,8 +19,7 @@ def scrape_activeplayer_val():
         hashbrown[row[0]] = row[1]
 
     count = int(hashbrown['Online Players (1H)'].replace(',', ''))
-    print('Number of concurrent Valorant players (activeplayer.io):')
-    print(count)
+    return count
 
 def scrape_steamcharts_csgo():
     result = requests.get('https://steamcharts.com/app/730')
@@ -28,8 +27,7 @@ def scrape_steamcharts_csgo():
     soup = BeautifulSoup(src, 'lxml')
     data = soup.find('span', class_='num')
     count = int(data.text)
-    print('Number of concurrent CSGO players: ')
-    print(count)
+    return count
 
 def scrape_player_counter_val():
     result = requests.get('https://playercounter.com/valorant/')
@@ -37,9 +35,4 @@ def scrape_player_counter_val():
     soup = BeautifulSoup(src, 'lxml')
     data = soup.find('h2')
     count = int(data.text.split(' ')[0].replace(',', '')) 
-    print('Number of concurrent Valorant players (playercounter):')
-    print(count)
-
-scrape_activeplayer_val()
-scrape_steamcharts_csgo()
-scrape_player_counter_val()
+    return count
