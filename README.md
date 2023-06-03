@@ -5,3 +5,4 @@ Misplaced Deagles is a website inspired by [misplaceditems.com](https://www.misp
 - [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 - [Python lxml parser](https://lxml.de/)
 - [pandas](https://pandas.pydata.org/)
+
