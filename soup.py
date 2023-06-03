@@ -1,8 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
 
-def scrape(site):
-    result = requests.get(site)
+def scrape_activeplayer_val():
+    result = requests.get('https://activeplayer.io/valorant/')
     src = result.content
     soup = BeautifulSoup(src, 'lxml')
     table = soup.table
@@ -19,11 +19,11 @@ def scrape(site):
         hashbrown[row[0]] = row[1]
 
     count = int(hashbrown['Online Players (1H)'].replace(',', ''))
-    print('Number of concurrent Valorant players:')
+    print('Number of concurrent Valorant players (activeplayer.io):')
     print(count)
 
-def scrape2(site):
-    result = requests.get(site)
+def scrape_steamcharts_csgo():
+    result = requests.get('https://steamcharts.com/app/730')
     src = result.content
     soup = BeautifulSoup(src, 'lxml')
     data = soup.find('span', class_='num')
@@ -31,5 +31,15 @@ def scrape2(site):
     print('Number of concurrent CSGO players: ')
     print(count)
 
-scrape('https://activeplayer.io/valorant/')
-scrape2('https://steamcharts.com/app/730')
+def scrape_player_counter_val():
+    result = requests.get('https://playercounter.com/valorant/')
+    src = result.content
+    soup = BeautifulSoup(src, 'lxml')
+    data = soup.find('h2')
+    count = int(data.text.split(' ')[0].replace(',', '')) 
+    print('Number of concurrent Valorant players (playercounter):')
+    print(count)
+
+scrape_activeplayer_val()
+scrape_steamcharts_csgo()
+scrape_player_counter_val()
