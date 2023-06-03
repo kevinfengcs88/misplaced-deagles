@@ -1,0 +1,33 @@
+name: misplaced-deagles workflow
+
+on:
+  # schedule:
+  #   - cron: '* * * * *'  
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Install dependencies
+      run: |
+        pip3 install python3-bs4
+        pip3 install lxml
+        pip3 install pandas
+
+    - name: Run script
+      run: python3 main.py
+    - name: Commit changes
+      run: |
+        git config --local user.name actions-user
+        git config --local user.email "actions@github.com"
+        git add .
+        git commit -m "GitHub Actions commit $(date)"
+        git push origin master
+      env:
+          REPO_KEY: ${{secrets.GITHUB_TOKEN}}
+          username: github-actions
