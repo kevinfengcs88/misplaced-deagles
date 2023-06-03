@@ -3,10 +3,8 @@ import requests
 
 def scrape(site):
     result = requests.get(site)
-    print(result.status_code)
     src = result.content
     soup = BeautifulSoup(src, 'lxml')
-
     table = soup.table
     table_rows = table.find_all('tr')
     hashbrown = {}
@@ -21,19 +19,17 @@ def scrape(site):
         hashbrown[row[0]] = row[1]
 
     count = int(hashbrown['Online Players (1H)'].replace(',', ''))
+    print('Number of concurrent Valorant players:')
     print(count)
-    print(type(count))
 
 def scrape2(site):
     result = requests.get(site)
-    print(result.status_code)
     src = result.content
     soup = BeautifulSoup(src, 'lxml')
-
     data = soup.find('span', class_='num')
     count = int(data.text)
+    print('Number of concurrent CSGO players: ')
     print(count)
-    print(type(count))
 
 scrape('https://activeplayer.io/valorant/')
 scrape2('https://steamcharts.com/app/730')
