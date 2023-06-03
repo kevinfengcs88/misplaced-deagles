@@ -2,7 +2,7 @@ name: misplaced-deagles workflow
 
 on:
   schedule:
-    - cron: '* * * * *'  
+    - cron: '30 * * * *'  
   # push:
   #   branches: [ master ]
   # pull_request:
@@ -25,6 +25,7 @@ jobs:
       run: |
         git config --local user.name actions-user
         git config --local user.email "actions@github.com"
+        git pull origin master
         git add .
         git commit -m "GitHub Actions commit $(date)"
         git push origin master
