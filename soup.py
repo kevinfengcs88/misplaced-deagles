@@ -20,7 +20,9 @@ def scrape(site):
             continue
         hashbrown[row[0]] = row[1]
 
-    print(hashbrown)
+    count = int(hashbrown['Online Players (1H)'].replace(',', ''))
+    print(count)
+    print(type(count))
 
 def scrape2(site):
     result = requests.get(site)
@@ -29,16 +31,9 @@ def scrape2(site):
     soup = BeautifulSoup(src, 'lxml')
 
     data = soup.find('span', class_='num')
-    print(data.text)
+    count = int(data.text)
+    print(count)
+    print(type(count))
 
 scrape('https://activeplayer.io/valorant/')
-
-
-
 scrape2('https://steamcharts.com/app/730')
-
-
-
-# with open('https://activeplayer.io/valorant/') as fp:
-#     soup = BeautifulSoup(fp, 'html.parser')
-
