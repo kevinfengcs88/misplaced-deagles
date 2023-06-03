@@ -29,5 +29,5 @@ jobs:
         git commit -m "GitHub Actions commit $(date)"
         git push origin master
       env:
-          REPO_KEY: ${{secrets.GITHUB_TOKEN}}
+          REPO_KEY: ${{ secrets.GITHUB_TOKEN }}
           username: github-actions
