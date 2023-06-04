@@ -6,3 +6,4 @@ Misplaced Deagles is a website inspired by [misplaceditems.com](https://www.misp
 - [Python lxml parser](https://lxml.de/)
 - [pandas](https://pandas.pydata.org/)
 
+##### 6/4 Update: There are no reliable sources or APIs for concurrent players of any games made by Riot Games. This project has been put on hold.
