@@ -2,7 +2,7 @@ name: misplaced-deagles workflow
 
 on:
   schedule:
-    - cron: '45 * * * *'  
+    - cron: '5 * * * *'  
   # push:
   #   branches: [ master ]
   # pull_request:
