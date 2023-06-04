@@ -4,7 +4,7 @@ import os.path
 import csv
 from datetime import datetime
 
-val_count = scrape_player_counter_val()
+val_count = scrape_activeplayer_val()
 csgo_count = scrape_steamcharts_csgo()
 
 now = datetime.now()
